@@ -1,0 +1,158 @@
+<html>
+
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            height: 900px;
+            background-color: rgb(251, 252, 252);
+        }
+
+        .container {
+            position: absolute;
+            margin-top: 100px;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .link {
+            position: relative;
+            text-align: center;
+            margin-bottom: 20px;
+            cursor: pointer;
+            color: #0202fc;
+        }
+
+        .form {
+            position: relative;
+            margin-top: 100px;
+            width: 350px;
+            height: 800px;
+            background-color: white;
+            box-shadow: rgba(100, 100, 111, 0.2) 0 7px 29px 0px;
+            border-radius: 8px;
+        }
+
+        .form-header {
+            border-radius: 8px 8px 0 0;
+            background-color: rgb(222, 222, 222);
+            padding: 10px;
+            text-align: center;
+        }
+
+        .form-body {
+            padding: 20px;
+        }
+
+        a {
+            text-decoration: none;
+            color: rgb(6, 45, 88);
+            font-size: 18px;
+        }
+
+        .field {
+            font-size: 16px;
+            font-weight: 400;
+            width: 100%;
+            padding: 10px 20px;
+            border: 1px solid #c7c1c1;
+            outline: none;
+            border-radius: 30px;
+            margin: 10px 0;
+        }
+
+        .field1 {
+            font-size: 16px;
+            font-weight: 400;
+            width: 90%;
+            padding: 10px 20px;
+            border: 1px solid #c7c1c1;
+            outline: none;
+            border-radius: 10px;
+            margin: 10px 0;
+        }
+
+        .btn {
+            padding: 8px 20px;
+            width: 100%;
+            border: none;
+            outline: none;
+            background-color: rgb(29, 93, 136);
+            color: white;
+            border-radius: 30px;
+            font-size: 20px;
+        }
+
+        .forgot {
+            float: right;
+        }
+
+        .options {
+            padding: 0 10px;
+            margin: 15px 0 25px;
+        }
+
+        .form-footer {
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="form">
+            <div class="form-header">
+                <h2>Update Data</h2>
+
+            </div>
+            <div class="form-body">
+                <form name="myform" action="" method="post" onsubmit="return validate()">
+                    <input type="text" name="username" id="username" placeholder="username" value="<%=username%>"
+                        disabled="true" class="field" required>
+                    <input type="text" name="firstname" placeholder="firstname" class="field" required>
+                    <input type="text" name="lastname" placeholder="lastname" class="field" required>
+                    <div style="display:flex;">
+                        <div>
+                            <p>Select Gender</p>
+                            <select name="gender" class="field1" required>
+                                <option> </option>
+                                <option>Male</option>
+                                <option>Female</option>
+                            </select>
+                        </div>
+                        <div>
+                            <p> Date of Birth </p>
+                            <input type="date" name="dob" id="dt" class="field1" required>
+                        </div>
+                    </div>
+                    <input type="text" name="contact" placeholder="contact" class="field" required>
+                    <input type="email" name="email" placeholder="email" disabled="true" value="<%=email%>"
+                        class="field" required>
+                    <input type="submit" value="Update Data" class="btn">
+                    <p id="response"></p>
+                </form>
+            </div>
+
+        </div>
+
+    </div>
+    <script>
+        function validate() {
+            document.getElementById("response").innerHTML = "User data updated successfully";
+            return true;
+        }
+    </script>
+
+
+</body>
+
+</html>

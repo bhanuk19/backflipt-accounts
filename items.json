@@ -1,0 +1,90 @@
+{
+  "users": [
+    {
+      "username": "vishnu123",
+      "email": "vishnuvardhanreddyg@backflipt.com",
+      "password": "Vishnu@12",
+      "date": "Thu Feb 23 2023 15:41:49 GMT+0530 (India Standard Time)",
+      "admin": "true",
+      "team": "DEVOPS",
+      "role": "ASE",
+      "firstname": "Vishnu Vardhan Reddy",
+      "lastname": "Gujjula",
+      "gender": "Male",
+      "dob": "2023-02-01",
+      "contact": "9121808980"
+    },
+    {
+      "username": "avinash123",
+      "email": "avinashb@backflipt.com",
+      "password": "Avinash@12",
+      "date": "Thu Feb 23 2023 15:41:49 GMT+0530 (India Standard Time)",
+      "admin": "false",
+      "team": "DEVOPS",
+      "role": "ASE"
+    },
+    {
+      "username": "siddu123",
+      "email": "siddu@backflipt.com",
+      "password": "Siddu@12",
+      "date": "Thu Feb 23 2023 15:41:49 GMT+0530 (India Standard Time)",
+      "admin": "false",
+      "team": "DEVOPS",
+      "role": "ASE"
+    },
+    {
+      "username": "sainath22",
+      "email": "sainath@backflipt.com",
+      "password": "S@inath22",
+      "date": "Thu Feb 23 2023 15:41:49 GMT+0530 (India Standard Time)",
+      "admin": "true",
+      "team": "DEV",
+      "role": "ASE"
+    },
+    {
+      "username": "santosh123",
+      "email": "santosh@backflipt.com",
+      "password": "Santosh@123",
+      "date": "Thu Feb 23 2023 15:41:49 GMT+0530 (India Standard Time)",
+      "admin": "false",
+      "team": "UI",
+      "role": "ASE"
+    },
+    {
+      "username": "krishna123",
+      "email": "krishna@backflipt.com",
+      "password": "Krishna@123",
+      "date": "Thu Feb 23 2023 15:41:49 GMT+0530 (India Standard Time)",
+      "admin": "true",
+      "team": "DEV",
+      "role": "SE"
+    },
+    {
+      "username": "neha123",
+      "email": "neha12@backflipt.com",
+      "password": "Neha@123",
+      "date": "Thu Feb 23 2023 15:41:49 GMT+0530 (India Standard Time)",
+      "admin": "true",
+      "team": "DEV",
+      "role": "TEAMLEAD"
+    },
+    {
+      "username": "sabbu123",
+      "email": "sabbu123@backflipt.com",
+      "password": "Sabbu@123",
+      "date": "Thu Feb 23 2023 15:41:49 GMT+0530 (India Standard Time)",
+      "admin": "true",
+      "team": "all",
+      "role": "AVP"
+    },
+    {
+      "username": "krao123",
+      "email": "krao123@backflipt.com",
+      "password": "Krao@123",
+      "date": "Thu Feb 23 2023 15:41:49 GMT+0530 (India Standard Time)",
+      "admin": "true",
+      "team": "all",
+      "role": "VP"
+    }
+  ]
+}
