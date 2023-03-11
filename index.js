@@ -57,24 +57,24 @@ app.get("/logout", (req, res) => {
 });
 
 // data.save();
-const checkPass = (incoming, hash) => {
+const checkPass = async (incoming, hash) => {
   // console.log(incoming, hash);
   bcrypt.compare(incoming, hash, function (err, result) {
-    console.log(result);
+    // console.log(result);
     return result;
   });
 };
 
 app.post("/user_login", async (req, res) => {
   try {
-    User.findOne({ username: req.body.username }, (err, doc) => {
+    User.findOne({ username: req.body.username }, async (err, doc) => {
       if (err) {
         res.send(false);
       } else {
         if (req.body.password === "") {
           res.send(false);
         } else {
-          if (checkPass(req.body.password, doc.password)) {
+          if (await bcrypt.compare(req.body.password, doc.password)) {
             SessionScheme.findOneAndUpdate(
               { username: req.body.username },
               { updatedAt: new Date() },
@@ -125,7 +125,7 @@ app.post("/checkAuth", (req, res) => {
   });
 });
 app.get("/users", async (req, res) => {
-  let users = await userSchema.find({}).select("username -_id");
+  let users = await userSchema.find({}).select("username email role team admin -_id");
   res.send(users);
 });
 
