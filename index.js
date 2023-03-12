@@ -13,7 +13,7 @@ const __dirname = dirname(__filename);
 import User from "./schemas/userSchema.js";
 import SessionScheme from "./schemas/sessionSchema.js";
 import sessionSchema from "./schemas/sessionSchema.js";
-import { log } from "console";
+// import { log } from "console";
 import userSchema from "./schemas/userSchema.js";
 const app = express();
 let _db = null;
@@ -52,7 +52,7 @@ app.get("/health", (req, res) => {
 });
 app.get("/logout", (req, res) => {
   req.session.destroy();
-  console.log("user logged out!!");
+  // console.log("user logged out!!");
   res.send("user logged out!!");
 });
 
@@ -75,38 +75,25 @@ app.post("/user_login", async (req, res) => {
           res.send(false);
         } else {
           if (await bcrypt.compare(req.body.password, doc.password)) {
-            SessionScheme.findOneAndUpdate(
-              { username: req.body.username },
-              { updatedAt: new Date() },
-              { new: true },
-              (err, sesDoc) => {
-                if (sesDoc) {
-                  let data = {
-                    session_id: sesDoc.session_id,
-                    from: req.body.from,
-                    username: sesDoc.username,
-                    role: sesDoc.role,
-                  };
-                  res.status(200).send(data);
-                } else {
-                  req.session.session_id = req.sessionID;
-                  req.session.username = req.body.username;
-                  let newSession = new SessionScheme({
-                    ...req.session,
-                    role: doc.admin,
-                  });
-                  newSession.save((err, newSes) => {
-                    let data = {
-                      session_id: newSes.session_id,
-                      from: req.body.from,
-                      username: doc.username,
-                      role: newSes.role,
-                    };
-                    res.status(200).send(data);
-                  });
-                }
-              }
-            );
+            // console.log(req.cookies);
+            req.session.session_id = req.sessionID;
+            req.session.username = req.body.username;
+            let newSession = new SessionScheme({
+              ...req.session,
+              role: doc.admin,
+            });
+            newSession.save((err, newSes) => {
+              if (err) res.send(false);
+              let data = {
+                session_id: newSes.session_id,
+                from: req.body.from,
+                username: doc.username,
+                role: newSes.role,
+              };
+              res.status(200).send(data);
+            });
+          } else {
+            res.send(false);
           }
         }
       }
@@ -116,16 +103,23 @@ app.post("/user_login", async (req, res) => {
   }
 });
 app.post("/checkAuth", (req, res) => {
-  sessionSchema.findOne({ session_id: req.body.session_id }, (err, doc) => {
-    if (doc) {
-      res.send([true, doc.role]);
-    } else {
-      res.send(false);
+  sessionSchema.findOneAndUpdate(
+    { session_id: req.body.session_id },
+    { updatedAt: new Date() },
+    { new: true },
+    (err, doc) => {
+      if (doc) {
+        res.send([true, doc.role]);
+      } else {
+        res.send(false);
+      }
     }
-  });
+  );
 });
 app.get("/users", async (req, res) => {
-  let users = await userSchema.find({}).select("username email role team admin -_id");
+  let users = await userSchema
+    .find({})
+    .select("username email role team admin -_id");
   res.send(users);
 });
 
