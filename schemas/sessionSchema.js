@@ -16,7 +16,7 @@ const SessionScheme = new Schema(
       default: false,
     },
   },
-  { collection: "sessions", timestamps: true }
+  { collection: "sessions", timestamps: true, expireAfterSeconds: 10 }
 );
 
 export default new mongoose.model("SessionScheme", SessionScheme);
